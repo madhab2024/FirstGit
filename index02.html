@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY DIV</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            z-index: 2;
+        }
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid gray;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #box1 {
+            background-color: red;
+        }
+        #box2 {
+            background-color: yellow;
+        }
+        #box3 {
+            background-color: green;
+        }
+        .item:hover {
+            background-color: rgba(120, 120, 224, 0.473);
+        }
+        #image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 3;
+        }
+        #circleText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            color: black; /* Default color */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+        #image.clicked #circleText {
+            color: white; /* Change text color after click */
+        }
+        .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            z-index: 1;
+            object-fit: cover;
+        }
+    </style>
+    <script>
+        function changeText(newText){
+            var circleText = document.querySelector('#circleText');
+            circleText.textContent = newText;
+            var circle = document.querySelector('#image');
+            circle.classList.toggle('clicked');
+        }
+    </script>
+</head>
+<body>
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Hubble_ultra_deep_field.jpg/450px-Hubble_ultra_deep_field.jpg" alt="">
+    <div class="container">
+        <div id="box1" class="item" onclick="changeText('STOP')">
+            <h3>This is Box 1</h3>
+        </div>
+        <div id="box2" class="item" onclick="changeText('WAIT')">
+            <h3>This is Box 2</h3>
+        </div>
+        <div id="box3" class="item" onclick="changeText('GO')">
+            <h3>This is Box 3</h3>
+        </div>
+        <div id="image" onclick="changeText('')">
+            <h1 id="circleText">Hello</h1>
+        </div>
+    </div>
+</body>
+</html>
